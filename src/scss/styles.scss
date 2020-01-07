@@ -18,6 +18,14 @@ body {
     --visibility-transition: 0.25s visibility ease-in-out, 0.25s opacity ease-in-out;
     // --menu-hover-color: #41b883;
     --menu-hover-transition: 0.25s all ease-in-out;
+    --menu-item-home: #ff8a00;
+    --menu-item-the-company: #e52e71;
+    --menu-item-our-services: #f44336;
+    --menu-item-latest: #9c27b0;
+    --menu-item-portfolio: #03a9f4;
+    --menu-item-dropdown: #4caf50;
+    --menu-item-dropdown-item: #8bc34a;
+
 
     /* Styles */
     height: var(--nav-menu-height);
@@ -35,82 +43,94 @@ body {
     height: 100%;
 
     li {
-        color: var(--menu-color);
-        transition: var(--menu-hover-transition);
-
-        &:hover {
-            color: var(--menu-color);
-            transition: var(--menu-hover-transition);
-        }
 
         a {
             text-decoration: none;
-            // color: var(--menu-color);
             text-transform: uppercase;
             font-family: sans-serif;
             padding: 10px;
             display: flex;
             height: 100%;
             align-items: center;
-            transition: var(--menu-hover-transition);
             position: relative;
+
+            &.dropdown-title {
+                color: #4caf50;
+                padding-right: 20px;
+
+                &:after {
+                    content: '➢';
+                    display: block;
+                    position: absolute;
+                    right: 0;
+                    top: 25%;
+                    transform: rotate(90deg);
+                }
+            }
 
             &:before {
                 content: '';
                 position: absolute;
                 bottom: 0;
                 width: 0;
-                height: 2px;
-                background-color: #fff;
                 transition: all 0.25s ease-in-out;
-                left: 0;
             }
 
             &:hover {
-                // color: var(--menu-hover-color);
-                transition: var(--menu-hover-transition);
 
                 &:before {
-                    content: '';
-                    position: absolute;
-                    bottom: 0;
                     width: 100%;
                     transition: all 0.25s ease-in-out;
                 }
             }
         }
     }
+}
 
-    > .dropdown-menu {
+.main-item {
 
-        & > a {
-            padding-right: 20px;
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        transition: all 0.25s ease-in-out;
+        left: 0;
+    }
+
+    &.item-home {
+
+        &:before {
+            background-color: var(--menu-item-home);
         }
     }
 
-    .dropdown-menu {
+    &.item-the-company {
 
-        li {
-
-            a {
-                padding: 10px 20px;
-                color: #8bc34a;
-            }
+        &:before {
+            background-color: var(--menu-item-the-company);
         }
+    }
 
-        ul {
-            // position: relative;
-            background-color: #201c29;
-            width: 250px;
-            visibility: hidden;
-            opacity: 0;
+    &.item-our-services {
 
-            /* height: 0;
-            overflow: hidden; */
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            transition: var(--visibility-transition);
+        &:before {
+            background-color: var(--menu-item-our-services);
+        }
+    }
+
+    &.item-latest {
+
+        &:before {
+            background-color: var(--menu-item-latest);
+        }
+    }
+
+    &.item-portfolio {
+
+        &:before {
+            background-color: var(--menu-item-portfolio);
         }
     }
 }
@@ -129,39 +149,50 @@ body {
         }
     }
 
-    & > a {
+    ul {
+        background-color: #201c29;
+        width: 250px;
+        visibility: hidden;
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        transition: var(--visibility-transition);
+    }
 
-        &:before {
-            content: '➢';
-            display: block;
-            position: absolute;
-            right: 0;
-            top: 25%;
-            transform: rotate(90deg);
+    li {
+
+        border-left: 4px solid transparent;
+        transition: var(--visibility-transition);
+
+        &:hover {
+            border-left: 4px solid var(--menu-item-dropdown-item);
+            transition: var(--visibility-transition);
+        }
+
+        a {
+            padding: 10px 20px;
+            color: var(--menu-item-dropdown-item);
         }
     }
 }
 
 .item-home {
-    color: #ff8a00;
+    color: var(--menu-item-home);
 }
 
 .item-the-company {
-    color: #e52e71;
+    color: var(--menu-item-the-company);
 }
 
 .item-our-services {
-    color: #f44336;
+    color: var(--menu-item-our-services);
 }
 
 .item-latest {
-    color: #9c27b0;
+    color: var(--menu-item-latest);
 }
 
 .item-portfolio {
-    color: #03a9f4;
-}
-
-.item-dropdown {
-    color: #4caf50;
+    color: var(--menu-item-portfolio);
 }
