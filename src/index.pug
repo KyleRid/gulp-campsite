@@ -7,5 +7,32 @@ html(lang="en")
         title Title
         link(rel="stylesheet", href="styles/styles.css")
     body
-
+        nav.nav-menu
+            ul.menu
+                li
+                    a(href="#").item-home Home
+                li
+                    a(href="#").item-the-company The Company
+                li
+                    a(href="#").item-our-services Our Services
+                li
+                    a(href="#").item-latest Latest
+                li
+                    a(href="#").item-portfolio Portfolio
+                li.dropdown-menu
+                    a.item-dropdown Dropdown
+                    ul
+                        li
+                            a(href="#", title="title") SubItem1
+                        li
+                            a(href="#", title="title") SubItem2
+                        li
+                            a(href="#", title="title") SubItem3
+                                ul
+                                    li
+                                        a(href="#", title="title") Subsubitem 1
+                                    li
+                                        a(href="#", title="title") Subsubitem 2
+                        li
+                            a(href="#", title="title") SubItem4
         script(src="js/main.bundle.js")
