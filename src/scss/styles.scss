@@ -18,14 +18,6 @@ body {
     --visibility-transition: 0.25s visibility ease-in-out, 0.25s opacity ease-in-out;
     // --menu-hover-color: #41b883;
     --menu-hover-transition: 0.25s all ease-in-out;
-    --menu-item-home: #ff8a00;
-    --menu-item-the-company: #e52e71;
-    --menu-item-our-services: #f44336;
-    --menu-item-latest: #9c27b0;
-    --menu-item-portfolio: #03a9f4;
-    --menu-item-dropdown: #4caf50;
-    --menu-item-dropdown-item: #8bc34a;
-
 
     /* Styles */
     height: var(--nav-menu-height);
@@ -43,94 +35,82 @@ body {
     height: 100%;
 
     li {
+        color: var(--menu-color);
+        transition: var(--menu-hover-transition);
+
+        &:hover {
+            color: var(--menu-color);
+            transition: var(--menu-hover-transition);
+        }
 
         a {
             text-decoration: none;
+            // color: var(--menu-color);
             text-transform: uppercase;
             font-family: sans-serif;
             padding: 10px;
             display: flex;
             height: 100%;
             align-items: center;
+            transition: var(--menu-hover-transition);
             position: relative;
-
-            &.dropdown-title {
-                color: #4caf50;
-                padding-right: 20px;
-
-                &:after {
-                    content: '➢';
-                    display: block;
-                    position: absolute;
-                    right: 0;
-                    top: 25%;
-                    transform: rotate(90deg);
-                }
-            }
 
             &:before {
                 content: '';
                 position: absolute;
                 bottom: 0;
                 width: 0;
+                height: 2px;
+                background-color: #fff;
                 transition: all 0.25s ease-in-out;
+                left: 0;
             }
 
             &:hover {
+                // color: var(--menu-hover-color);
+                transition: var(--menu-hover-transition);
 
                 &:before {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
                     width: 100%;
                     transition: all 0.25s ease-in-out;
                 }
             }
         }
     }
-}
 
-.main-item {
+    > .dropdown-menu {
 
-    &:before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        width: 0;
-        height: 2px;
-        transition: all 0.25s ease-in-out;
-        left: 0;
-    }
-
-    &.item-home {
-
-        &:before {
-            background-color: var(--menu-item-home);
+        & > a {
+            padding-right: 20px;
         }
     }
 
-    &.item-the-company {
+    .dropdown-menu {
 
-        &:before {
-            background-color: var(--menu-item-the-company);
+        li {
+
+            a {
+                padding: 10px 20px;
+                color: #8bc34a;
+            }
         }
-    }
 
-    &.item-our-services {
+        ul {
+            // position: relative;
+            background-color: #201c29;
+            width: 250px;
+            visibility: hidden;
+            opacity: 0;
 
-        &:before {
-            background-color: var(--menu-item-our-services);
-        }
-    }
-
-    &.item-latest {
-
-        &:before {
-            background-color: var(--menu-item-latest);
-        }
-    }
-
-    &.item-portfolio {
-
-        &:before {
-            background-color: var(--menu-item-portfolio);
+            /* height: 0;
+            overflow: hidden; */
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            transition: var(--visibility-transition);
         }
     }
 }
@@ -149,50 +129,39 @@ body {
         }
     }
 
-    ul {
-        background-color: #201c29;
-        width: 250px;
-        visibility: hidden;
-        opacity: 0;
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        transition: var(--visibility-transition);
-    }
+    & > a {
 
-    li {
-
-        border-left: 4px solid transparent;
-        transition: var(--visibility-transition);
-
-        &:hover {
-            border-left: 4px solid var(--menu-item-dropdown-item);
-            transition: var(--visibility-transition);
-        }
-
-        a {
-            padding: 10px 20px;
-            color: var(--menu-item-dropdown-item);
+        &:before {
+            content: '➢';
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 25%;
+            transform: rotate(90deg);
         }
     }
 }
 
 .item-home {
-    color: var(--menu-item-home);
+    color: #ff8a00;
 }
 
 .item-the-company {
-    color: var(--menu-item-the-company);
+    color: #e52e71;
 }
 
 .item-our-services {
-    color: var(--menu-item-our-services);
+    color: #f44336;
 }
 
 .item-latest {
-    color: var(--menu-item-latest);
+    color: #9c27b0;
 }
 
 .item-portfolio {
-    color: var(--menu-item-portfolio);
+    color: #03a9f4;
+}
+
+.item-dropdown {
+    color: #4caf50;
 }
