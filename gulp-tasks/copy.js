@@ -15,6 +15,7 @@ function copy() {
                 patterns.locales.src,
                 patterns.robots.src,
                 patterns.sitemap.src,
+                patterns.views.src
             ], {
             base: './src'
         })

@@ -16,7 +16,9 @@ const scripts = require(paths.tasks.scripts);
 
 function watchFiles() {
     gulp.watch([patterns.styles.src], gulp.series(styles.lint, styles.run));
-    gulp.watch([patterns.views.src, patterns.index.src], gulp.series(views.pugs.run, server.reload));
+    // gulp.watch([/*patterns.views.src,*/ patterns.index.src], gulp.series(/*views.pugs.run,*/ server.reload));
+    console.log(patterns);
+
     gulp.watch([
         patterns.images.src,
         patterns.videos.src,
@@ -25,6 +27,7 @@ function watchFiles() {
         patterns.locales.src,
         patterns.robots.src,
         patterns.sitemap.src,
+        patterns.views.src,
     ],  gulp.series(copy.run, server.reload));
     gulp.watch([patterns.scripts.src],  gulp.series(scripts.run, server.reload));
 }
@@ -38,7 +41,7 @@ const dev = gulp.series(
             styles.run,
         ),
         copy.run,
-        views.pugs.run,
+        /*views.pugs.run,*/
         scripts.run
     ),
     server.start,
@@ -54,7 +57,7 @@ const build = gulp.series(
             styles.run,
         ),
         copy.run,
-        views.pugs.run,
+       /* views.pugs.run,*/
         scripts.run
     )
 );

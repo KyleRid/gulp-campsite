@@ -34,9 +34,9 @@ const paths = {
         dev     : dirs.dev  + '/styles',
     },
     views: {
-        src     : dirs.src  + '/templates',
-        dist    : dirs.dist + '/templates',
-        dev     : dirs.dev  + '/templates',
+        src     : dirs.src  + '',
+        dist    : dirs.dist + '',
+        dev     : dirs.dev  + '',
     },
     images: {
         src     : dirs.src  + '/img',
@@ -68,7 +68,7 @@ const paths = {
 // patterns for tasks
 const patterns = {
     index: {
-        src     : dirs.src  + '/index.pug',
+        src     : dirs.src  + '/index.html',
         dist    : dirs.dist + '/index.html',
         dev     : dirs.dev  + '/index.html',
     },
@@ -79,7 +79,7 @@ const patterns = {
         src: paths.styles.src + '/**/*.scss',
     },
     views: {
-        src: paths.views.src + '/**/*.pug',
+        src: paths.views.src + '/**/*.html',
     },
     images: {
         src: paths.images.src + '/**/*.{jpg,jpeg,png,svg,gif}',
