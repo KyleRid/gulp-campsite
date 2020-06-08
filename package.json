@@ -45,7 +45,7 @@
         "ts-loader": "^6.2.1",
         "typescript": "^3.7.4",
         "webpack": "^4.41.5",
-        "yargs": "^15.0.2"
+        "yargs": "^15.3.1"
     },
     "browserslist": [
         "defaults"
