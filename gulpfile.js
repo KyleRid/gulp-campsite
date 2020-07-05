@@ -69,8 +69,7 @@ exports.build = build;
 
 
 
-exports.stylesTest = gulp.series(
-    styles.linter,
-    styles.run
+exports.server = gulp.series(
+    server.start,
 );
 

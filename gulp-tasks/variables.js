@@ -17,7 +17,7 @@ const dirs = {
 // paths for all directories
 const paths = {
     tasks: {
-        browsersync: dirs.tasks + '/browsersync',
+        // browsersync: dirs.tasks + '/browsersync',
         // styles: dirs.tasks + '/styles',
         copy: dirs.tasks + '/copy',
         clean: dirs.tasks + '/clean',

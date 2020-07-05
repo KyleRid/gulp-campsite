@@ -1,4 +1,4 @@
-module.exports = class Config {
+class Config {
     constructor(dirs, PROD = false) {
         this._src = dirs.src + '/scss/**/*.scss';
         this._paths = {
@@ -23,3 +23,5 @@ module.exports = class Config {
         return this._PROD;
     }
 }
+
+module.exports = Config;
