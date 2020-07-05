@@ -8,8 +8,8 @@ const gulp = require('gulp');
 // Import tasks
 const server = require(dirs.tasks + '/browsersync');
 const styles = require(dirs.tasks + '/styles');
-const copy = require(paths.tasks.copy);
-const clean = require(paths.tasks.clean);
+const copy = require(dirs.tasks + '/copy');
+const clean = require(dirs.tasks + '/clean');
 const views = require(paths.tasks.views);
 const scripts = require(paths.tasks.scripts);
 
@@ -70,6 +70,6 @@ exports.build = build;
 
 
 exports.server = gulp.series(
-    clean.run,
+    copy.run,
 );
 
