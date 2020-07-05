@@ -6,7 +6,7 @@
     "scripts": {
         "dev": "gulp dev",
         "dist": "gulp build --prod",
-        "dist-serve": "gulp dev --prod"
+        "dist-serve": "gulp dev --prod --ts --sass"
     },
     "keywords": [
         "gulp",

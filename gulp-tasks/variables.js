@@ -3,6 +3,7 @@
 // Init prod flag
 const yargs = require('yargs');
 const PROD = yargs.argv.prod;
+const sass_syntax = yargs.argv.sass ? 'sass': 'scss';
 
 // environment directories paths
 const dirs = {
@@ -16,7 +17,7 @@ const dirs = {
 const paths = {
     tasks: {
         browsersync: dirs.tasks + '/browsersync',
-        styles: dirs.tasks + '/styles',
+        // styles: dirs.tasks + '/styles',
         copy: dirs.tasks + '/copy',
         clean: dirs.tasks + '/clean',
         views: dirs.tasks + '/views',
@@ -28,11 +29,11 @@ const paths = {
         dist    : dirs.dist + '/js',
         dev     : dirs.dev  + '/js',
     },
-    styles: {
-        src     : dirs.src  + '/scss',
-        dist    : dirs.dist + '/styles',
-        dev     : dirs.dev  + '/styles',
-    },
+    // styles: {
+    //     src     : dirs.src  + '/scss',
+    //     dist    : dirs.dist + '/styles',
+    //     dev     : dirs.dev  + '/styles',
+    // },
     views: {
         src     : dirs.src  + '',
         dist    : dirs.dist + '',
@@ -75,9 +76,9 @@ const patterns = {
     scripts: {
         src: paths.scripts.src + '/**/*.ts',
     },
-    styles: {
-        src: paths.styles.src + '/**/*.scss',
-    },
+    // styles: {
+    //     src: paths.styles.src + '/**/*.scss',
+    // },
     views: {
         src: paths.views.src + '/**/*.html',
     },

@@ -4,7 +4,7 @@ const { patterns, paths, PROD } = require('./variables');
 const gulp = require('gulp');
 const webpack = require('webpack');
 const webpackConfig = require('../webpack.config');
-
+// TODO: add support of ts/js
 function scripts() {
     return new Promise((resolve, reject) => {
         webpack(webpackConfig, (err, stats) => {

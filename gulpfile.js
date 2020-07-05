@@ -66,3 +66,5 @@ const build = gulp.series(
 exports.dev   = dev;
 exports.build = build;
 
+exports.styles = styles;
+
