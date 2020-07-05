@@ -11,7 +11,7 @@ const styles = require(dirs.tasks + '/styles/styles');
 const copy = require(dirs.tasks + '/copy/copy');
 const clean = require(dirs.tasks + '/clean/clean');
 const views = require(paths.tasks.views);
-const scripts = require(paths.tasks.scripts);
+const scripts = require(dirs.tasks + '/scripts/scripts');
 
 
 function watchFiles() {
