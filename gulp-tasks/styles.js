@@ -1,6 +1,6 @@
 'use strict';
 const { PROD, dirs } = require('./variables');
-
+const Config = require('./_utils/Config.class');
 // packages
 const gulp = require('gulp');
 const sass = require('gulp-sass');
@@ -17,64 +17,49 @@ const postCSSPlugins = [
         PROD ? cssnano() : false,
 ].filter(Boolean);
 
-class Config {
-    constructor(dirs, PROD = false) {
-        this._src = dirs.src + '/scss/**/*.scss';
-        this._paths = {
-            src     : dirs.src + '/scss',
-            dist    : dirs.dist + '/styles',
-            dev     : dirs.dev  + '/styles',
-        }
-        this._PROD = PROD;
-    }
-
-    get dest() {
-        return this._PROD ? 
-            this._paths.dist : 
-            this._paths.dev;  
-    }
-
-    get src() {
-        return this._src;
-    }
-
-    get PROD() {
-        return this._PROD;
-    }
-}
 const _cfg = new Config(dirs, PROD);
-function styles(cfg) {
-    return gulp
-        .src(cfg.src)
-        .pipe(plumber())
-        .pipe(gulpIf(
-            !cfg.PROD, 
-            sourcemaps.init({
-                largeFile: true,
-            }
-        )))
-        .pipe(sass({
-            outputStyle: 'expanded',
-        }))
-        .on('error', error => 'Error: ' + error.message)
-        .pipe(postcss(postCSSPlugins))
-        .pipe(gulpIf(!cfg.PROD, sourcemaps.write()))
-        .pipe(gulp.dest(cfg.dest)
-        )
-        // .pipe(server.stream());
-}
 
-function linter(cfg) {
-    return gulp
-        .src([cfg.src])
-        .pipe(gulpStyleLint({
-            configFile: './.stylelintrc',
-            reporters: [{formatter: 'string', console: true}],
-            syntax: 'scss'
-        }));
-};
-linter(_cfg)
+class Styles {
+    constructor(cfg) {
+        this.cfg = cfg;
+        this.styles = this.styles.bind(this);
+        this.linter = this.linter.bind(this);
+    }
+
+    styles() {
+        return gulp
+            .src(this.cfg.src)
+            .pipe(plumber())
+            .pipe(gulpIf(
+                !this.cfg.PROD, 
+                sourcemaps.init({
+                    largeFile: true,
+                }
+            )))
+            .pipe(sass({
+                outputStyle: 'expanded',
+            }))
+            .on('error', error => 'Error: ' + error.message)
+            .pipe(postcss(postCSSPlugins))
+            .pipe(gulpIf(!this.cfg.PROD, sourcemaps.write()))
+            .pipe(gulp.dest(this.cfg.dest)
+            )
+            // .pipe(server.stream());
+    }
+
+    linter() {
+        return gulp
+            .src([this.cfg.src])
+            .pipe(gulpStyleLint({
+                configFile: './.stylelintrc',
+                reporters: [{formatter: 'string', console: true}],
+                syntax: 'scss'
+            }));
+    }
+}
+const styles = new Styles(_cfg);
+
 module.exports = {
-    run: styles,
-    lint: linter,
+    run: styles.styles,
+    linter: styles.linter,
 }

@@ -1,8 +1,17 @@
 'use strict';
-
-const { serverConfig } = require('./variables');
-
+class Config {
+    constructor(dirs, PROD = false) {
+        this.baseDir = PROD ? dirs.dist : dirs.dev;
+        this.port = PROD ? 3000 : 3001;
+        // this.proxy = 'localbuild.dev';
+    }
+}
+const {PROD, dirs} = require('./variables');
 const browserSync = require('browser-sync').create();
+const serverConfig = new Config(dirs, PROD);
+
+
+
 
 function start(finish) {
     browserSync.init({
@@ -10,7 +19,6 @@ function start(finish) {
             baseDir: serverConfig.baseDir,
         },
         port: serverConfig.port,
-        // for WP development and other server stuff
         // proxy: serverConfig.proxy
     });
     finish();

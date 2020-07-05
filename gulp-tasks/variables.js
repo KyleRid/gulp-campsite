@@ -5,6 +5,7 @@ const yargs = require('yargs');
 const PROD = yargs.argv.prod;
 const sass_syntax = yargs.argv.sass ? 'sass': 'scss';
 
+// PROD is a static property of a GlobalConfig class, and maybe dirs too
 // environment directories paths
 const dirs = {
     src: 'src',
@@ -116,12 +117,6 @@ const tasks = {
     }
 }
 
-// configuration for BrowserSync
-const serverConfig = {
-    baseDir: PROD ? dirs.dist : dirs.dev,
-    port: PROD ? 3000 : 3001,
-    // proxy: 'localbuild.dev'
-}
 
 module.exports = {
     dirs: dirs,
@@ -129,5 +124,4 @@ module.exports = {
     patterns: patterns,
     PROD: PROD,
     tasks: tasks,
-    serverConfig: serverConfig,
 }

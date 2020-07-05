@@ -1,13 +1,13 @@
 'use strict';
 // variables
-const { patterns, paths, PROD } = require('./gulp-tasks/variables');
+const { patterns, paths, PROD, dirs } = require('./gulp-tasks/variables');
 
 // Packages
 const gulp = require('gulp');
 
 // Import tasks
 const server = require(paths.tasks.browsersync);
-const styles = require(paths.tasks.styles);
+const styles = require(dirs.tasks + '/styles');
 const copy = require(paths.tasks.copy);
 const clean = require(paths.tasks.clean);
 const views = require(paths.tasks.views);
@@ -37,11 +37,11 @@ const dev = gulp.series(
     clean.run,
     gulp.parallel(
         gulp.series(
-            styles.lint,
+            styles.linter,
             styles.run,
         ),
         copy.run,
-        /*views.pugs.run,*/
+        // views.pugs.run,
         scripts.run
     ),
     server.start,
@@ -53,18 +53,24 @@ const build = gulp.series(
     clean.run,
     gulp.parallel(
         gulp.series(
-            styles.lint,
+            styles.linter,
             styles.run,
         ),
         copy.run,
-       /* views.pugs.run,*/
+    //    views.pugs.run,
         scripts.run
     )
 );
+
 
 // Export tasks for the usage
 exports.dev   = dev;
 exports.build = build;
 
-exports.styles = styles;
+
+
+exports.stylesTest = gulp.series(
+    styles.linter,
+    styles.run
+);
 
