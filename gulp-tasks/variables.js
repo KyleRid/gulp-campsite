@@ -46,5 +46,4 @@ module.exports = {
     paths: paths,
     patterns: patterns,
     PROD: PROD,
-    tasks: tasks,
 }

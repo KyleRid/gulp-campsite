@@ -15,19 +15,18 @@ const scripts = require(paths.tasks.scripts);
 
 
 function watchFiles() {
-    gulp.watch([patterns.styles.src], gulp.series(styles.lint, styles.run));
+    gulp.watch([dirs.src + '/styles/**/*.scss'], gulp.series(styles.linter, styles.run));
     // gulp.watch([/*patterns.views.src,*/ patterns.index.src], gulp.series(/*views.pugs.run,*/ server.reload));
-    console.log(patterns);
 
     gulp.watch([
-        patterns.images.src,
-        patterns.videos.src,
-        patterns.favicons.src,
-        patterns.fonts.src,
-        patterns.locales.src,
-        patterns.robots.src,
-        patterns.sitemap.src,
-        patterns.views.src,
+        dirs.src + '/img/**/*.{jpg,jpeg,png,svg,gif}',
+        dirs.src + '/videos/**/*.{mp4,mov}',
+        dirs.src + '/favicons/**/*.{jpeg,jpg,png,svg,gif,ico}',
+        dirs.src + '/fonts/**/*.{ttf,woff,eof,svg}',
+        dirs.src + '/locales/**/*.{pot}',
+        dirs.src + '/robots.txt',
+        dirs.src + '/sitemap.xml',
+        dirs.src + '/views/**/*.html',
     ],  gulp.series(copy.run, server.reload));
     gulp.watch([patterns.scripts.src],  gulp.series(scripts.run, server.reload));
 }
@@ -66,10 +65,3 @@ const build = gulp.series(
 // Export tasks for the usage
 exports.dev   = dev;
 exports.build = build;
-
-
-
-exports.server = gulp.series(
-    copy.run,
-);
-
