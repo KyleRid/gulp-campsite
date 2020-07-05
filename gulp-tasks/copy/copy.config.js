@@ -1,8 +1,8 @@
 'use strict'
 class CopyConfig {
     constructor(dirs, PROD) {
-        this.dirs = require('../variables').dirs;
-        this.PROD = require('../variables').PROD;
+        this.dirs = require('../global-config.class').dirs;
+        this.PROD = require('../global-config.class').PROD;
         this.src = [
             this.dirs.src + '/img/**/*.{jpg,jpeg,png,svg,gif}',
             this.dirs.src + '/videos/**/*.{mp4,mov}',

@@ -20,5 +20,4 @@ class GlobalConfig {
     }
 }
 
-
 module.exports = new GlobalConfig();

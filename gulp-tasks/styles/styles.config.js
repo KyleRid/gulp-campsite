@@ -2,8 +2,8 @@
 
 class StylesConfig {
     constructor() {
-        this.dirs = require('../variables').dirs;
-        this.PROD = require('../variables').PROD;
+        this.dirs = require('../global-config.class').dirs;
+        this.PROD = require('../global-config.class').PROD;
         this.src = this.dirs.src + '/scss/**/*.scss';
         this.paths = {
             src     : this.dirs.src + '/scss',

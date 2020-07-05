@@ -1,5 +1,5 @@
 const path = require("path");
-const { PROD } = require('./gulp-tasks/variables');
+const { PROD } = require('./gulp-tasks/global-config.class');
 
 module.exports = {
   mode: PROD ? "production" : "development",
