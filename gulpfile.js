@@ -6,7 +6,7 @@ const { patterns, paths, PROD, dirs } = require('./gulp-tasks/variables');
 const gulp = require('gulp');
 
 // Import tasks
-const server = require(paths.tasks.browsersync);
+const server = require(dirs.tasks + '/browsersync');
 const styles = require(dirs.tasks + '/styles');
 const copy = require(paths.tasks.copy);
 const clean = require(paths.tasks.clean);
@@ -70,6 +70,6 @@ exports.build = build;
 
 
 exports.server = gulp.series(
-    server.start,
+    clean.run,
 );
 
