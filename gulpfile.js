@@ -1,17 +1,19 @@
 'use strict';
 // variables
-const { patterns, paths, PROD, dirs } = require('./gulp-tasks/variables');
-
+// const {PROD, dirs} = require('./gulp-tasks/variables');
+const GlobalConfig = require('./gulp-tasks/variables');
+const config = GlobalConfig;
+const dirs = config.dirs;
 // Packages
 const gulp = require('gulp');
 
 // Import tasks
-const server = require(dirs.tasks + '/browsersync/browsersync');
-const styles = require(dirs.tasks + '/styles/styles');
-const copy = require(dirs.tasks + '/copy/copy');
-const clean = require(dirs.tasks + '/clean/clean');
-const views = require(paths.tasks.views);
-const scripts = require(dirs.tasks + '/scripts/scripts');
+const server = require(config.dirs.tasks + '/browsersync/browsersync');
+const styles = require(config.dirs.tasks + '/styles/styles');
+const copy = require(config.dirs.tasks + '/copy/copy');
+const clean = require(config.dirs.tasks + '/clean/clean');
+// const views = require(paths.tasks.views);
+const scripts = require(config.dirs.tasks + '/scripts/scripts');
 
 
 function watchFiles() {
@@ -28,7 +30,7 @@ function watchFiles() {
         dirs.src + '/sitemap.xml',
         dirs.src + '/views/**/*.html',
     ],  gulp.series(copy.run, server.reload));
-    gulp.watch([patterns.scripts.src],  gulp.series(scripts.run, server.reload));
+    gulp.watch([dirs.src + '/scripts/**/*.ts'],  gulp.series(scripts.run, server.reload));
 }
 
 // Start the development and run a server
